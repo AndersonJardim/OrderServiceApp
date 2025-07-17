@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OrderServiceAPP.Application.Commands;
+using OrderServiceAPP.Application.Dtos;
 
 namespace OrderServiceApp.API.Controllers
 {
@@ -11,7 +13,8 @@ namespace OrderServiceApp.API.Controllers
         /// Serviço para cadastro de pedidos
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Post()
+        [ProducesResponseType(typeof(OrderDto), 200)]
+        public async Task<IActionResult> Post(OrderCreateCommand command)
         {
             return Ok();
         }
@@ -20,7 +23,7 @@ namespace OrderServiceApp.API.Controllers
         /// Serviço para atualiação de pedidos. 
         /// </summary> 
         [HttpPut]
-        public async Task<IActionResult> Put()
+        public async Task<IActionResult> Put(OrderUpdateCommand command)
         {
             return Ok();
         }
@@ -28,8 +31,9 @@ namespace OrderServiceApp.API.Controllers
         /// <summary> 
         /// Serviço para exclusão / inativação de pedidos. 
         /// </summary>
-        [HttpDelete]
-        public async Task<IActionResult> Delete()
+        [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(OrderDto), 200)]
+        public async Task<IActionResult> Delete(OrderDeleteCommand command)
         {
             return Ok();
         }
@@ -38,7 +42,18 @@ namespace OrderServiceApp.API.Controllers
         /// Serviço para consulta de pedidos. 
         /// </summary> 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        [ProducesResponseType(typeof(List<OrderDto>), 200)]
+        public async Task<IActionResult> GetAll() //
+        {
+            return Ok();
+        }
+
+        /// <summary> 
+        /// Serviço para consulta de pedidos por id. 
+        /// </summary> 
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(OrderDto), 200)]
+        public async Task<IActionResult> GetById(Guid id)
         {
             return Ok();
         }
