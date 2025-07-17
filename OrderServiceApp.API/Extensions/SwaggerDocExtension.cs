@@ -20,7 +20,7 @@ namespace OrderServiceApp.API.Extensions
                 {
                     options.SwaggerDoc("v1", new OpenApiInfo
                     {
-                        Title = "OrderApp - Sistema de pedito utilizando padrões e arquitetura e arquitetura",
+                        Title = "OrderApp - Sistema de pedito utilizando padrões e arquitetura",
                         Description = "API para controle de pedidos de usuários.",
                         Version = "1.0",
                         Contact = new OpenApiContact
